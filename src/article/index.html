@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="title" id="title"></div>
+  <div class="publishAt" id="publishAt">
+    <span></span>
+    <span></span>
+  </div>
+  <img class="coverImage" id="coverImage" />
+  <div class='AudioPlayer' id='audioPlayer'>
+    <div>
+      <span> </span>
+      <span> </span>
+    </div>
+    <div>
+      <i aria-label="play"><svg viewBox="64 64 896 896" class="" data-icon="play-circle" width="48px"
+          height="48px" fill="currentColor" aria-hidden="true">
+          <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+          <path d="M719.4 499.1l-296.1-215A15.9 15.9 0 0 0 398 297v430c0 13.1 14.8 20.5 25.3 12.9l296.1-215a15.9 15.9 0 0 0 0-25.8zm-257.6 134V390.9L628.5 512 461.8 633.1z"></path>
+        </svg></i>
+    </div>
+    <audio id="audio" style="display: none " preload="metadata"></audio>
+  </div>
+  <div class="content markdown-body" id="content"></div>
+  <div class="jump" id='jump'></div>
+  <div class="sperator"></div>
+  <div class="commentPanel" id="commentPanel">
+    <span>留言</span>
+    <div class="commentList" id='commentList'>
+
+    </div>
+  </div>
+
+  <script id="commentListTpl" type="x-tmpl-mustache">
+    {{#comments}}
+      <div class="comment" >
+        <div><img src="{{avatar}}" /></div>
+        <div>
+          <div>
+            <div>
+              <div>{{nickName}}</div>
+              <div>{{createAt}}</div>
+            </div>
+            <div></div>
+          </div>
+          <div class="markdown-body">
+            {{{content}}}
+          </div>
+          {{#reply}}
+            <div>
+              <div>作者回复：</div>
+              <div>{{{content}}}</div>
+            </div>
+          {{/reply}}          
+        </div>
+      </div>
+    {{/comments}}
+  </script>
+</body>
+
+</html>
