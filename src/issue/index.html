@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="panelTpl">
+    {{#issue}}
+    <div class="js-comment">
+      <div class="discussion-header">
+        <div class="clearfix">
+          <a href="#bottom" class="float-right py-1 js-scroll">Jump to bottom</a>
+
+          {{#open}}
+          <span class="State State--green float-left">
+            <svg class="octicon octicon-issue-opened" viewBox="0 0 14 16" version="1.1" width="14"
+              height="16" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+            </svg>
+            Open
+          </span>
+          {{/open}}
+          {{^open}}
+          <span class="State State--red float-left">
+            <svg class="octicon octicon-issue-opened" viewBox="0 0 14 16" version="1.1" width="14"
+              height="16" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+            </svg>
+            Closed
+          </span>
+          {{/open}}
+
+        </div>
+
+        <h1 class="discussion-title">
+          {{title}}
+          <span class="text-gray text-normal">#{{id}}</span>
+        </h1>
+        <div class="hide-when-editing">
+          <div class="d-flex flex-row discussion-block-title">
+            <div class="flex-auto">
+              <img class="avatar" src="{{avatar}}" width="32" height="32" alt="@hlousekv">
+
+              <div class="discussion-block-meta">
+                <strong><a class="username" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=21101969"
+                    data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self"
+                    href="#">{{nickName}}</a></strong>
+
+                opened this issue
+                {{openAt}}
+                <!-- • edited 4 days ago -->
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="discussion-starting-comment">
+        <div class="discussion-comment markdown-body hide-when-editing">
+          {{{first.content}}}
+        </div>
+      </div>
+    </div>
+    {{/issue}}
+    {{#comments}}
+    <div class="discussion-block">
+      <div class="bubble js-comment js-comment-container js-suggested-changes-container" id="issuecomment-463664208">
+
+        <div class="js-minimizable-comment">
+          <div class="discussion-block-title">
+            <div class="float-right mt-2">
+              <div class="ml-2 hide-when-editing">
+                <details class="details-reset details-overlay details-overlay-dark">
+                  <!-- btn-link muted-link height-full -->
+                  <summary class="btn-link muted-link height-full">
+                    <svg class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1"
+                      width="13" height="16" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                    </svg>
+                  </summary>
+
+                  <!-- details-dialog Box Box--overlay anim-fade-in fast lh-default rounded-1 -->
+                  <div class="details-dialog Box Box--overlay anim-fade-in fast lh-default rounded-1"
+                    role="dialog">
+                    <div class="p-3">
+                      <clipboard-copy class="btn btn-block js-clipboard-copy" for="issuecomment-463664208-permalink"
+                        aria-label="Copy link" role="menuitem">
+                        <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16"
+                          height="16" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                        </svg> Copy link
+                      </clipboard-copy>
+                    </div>
+                  </div>
+                </details>
+              </div>
+
+            </div>
+
+            <img class="avatar" height="32" width="32" alt="@gaearon" src="{{avatar}}">
+
+            <div class="discussion-block-meta">
+              <a href="#" class="username">
+                {{nickName}}
+              </a>
+
+              <br>
+
+              commented
+
+              <a id="issuecomment-463664208-permalink" href="#issuecomment-463664208"><time class="timestamp"
+                  datetime="2019-02-14 15:15:19 UTC">{{createAt}}</time></a>
+
+            </div>
+          </div>
+
+          <div class="bubble-content pb-2 ">
+            <div class="markdown-body hide-when-editing f5 p-0" data-unfurl-hide-url="/content_reference_attachments/hide"
+              data-unfurl-authenticity-token="NNvRec7ZB5Q/ScGS3xatmx5NG6FzgVdVGz4nqGaNkFpxOhWKdb2hDfhH40QAYUIXIxni2L/ZWMJEDPlebzKjcg==">
+              {{{content}}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/comments}}
+  </div>
+  <a name="bottom" id="bottom"></a>
+</body>
+
+<script id="openModalTpl" type="x-tmpl-mustache">
+  <details class="details-reset details-overlay details-overlay-dark" open="">
+    <summary class="btn-link muted-link height-full">
+      <svg class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1" width="13"
+        height="16" aria-hidden="true">
+        <path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+      </svg>
+    </summary>
+
+    <div class="details-dialog Box Box--overlay anim-fade-in fast lh-default rounded-1" role="dialog">
+      <div class="p-3">
+        <clipboard-copy class="btn btn-block js-clipboard-copy" for="issuecomment-463664208-permalink"
+          aria-label="Copy link" role="menuitem">
+          <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16"
+            aria-hidden="true">
+            <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+          </svg> Copy link
+        </clipboard-copy>
+      </div>
+    </div>
+  </details>
+</script>
+
+<script id="closeModalTpl" type="x-tmpl-mustache">
+  <details class="details-reset details-overlay details-overlay-dark">
+    <!-- btn-link muted-link height-full -->
+    <summary class="btn-link muted-link height-full">
+      <svg class="octicon octicon-kebab-horizontal" viewBox="0 0 13 16" version="1.1"
+        width="13" height="16" aria-hidden="true">
+        <path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM13 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+      </svg>
+    </summary>
+
+    <!-- details-dialog Box Box--overlay anim-fade-in fast lh-default rounded-1 -->
+    <div class="details-dialog Box Box--overlay anim-fade-in fast lh-default rounded-1"
+      role="dialog">
+      <div class="p-3">
+        <clipboard-copy class="btn btn-block js-clipboard-copy" for="issuecomment-463664208-permalink"
+          aria-label="Copy link" role="menuitem">
+          <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16"
+            height="16" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+          </svg> Copy link
+        </clipboard-copy>
+      </div>
+    </div>
+  </details>
+</script>
+
+</html>

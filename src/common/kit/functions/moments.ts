@@ -12,6 +12,6 @@ export function formatDate(at: number) {
 
 export function fromNow(at: number) {
   const days = (Date.now() - at) / (1000 * 60 * 60 * 24 * 30);
-  if (days < 31) return moment(at).fromNow();
+  if (days < 7) return moment(at).fromNow();
   else return formatTime(at);
 }

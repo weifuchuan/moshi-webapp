@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="tabs border-top" id="tabs">
+    <a class="selected" href="#" onclick="send({ action: 'filter', payload: 'open' })">Open</a>
+    <a class="" href="#" onclick="send({ action: 'filter', payload: 'close' })">Closed</a>
+    <a class="" href="#" onclick="send({ action: 'filter', payload: 'your' })">Yours</a>
+  </nav>
+  <div class="list color-icons" id="list">
+
+  </div>
+</body>
+
+<script id="issuesTpl" type="x-tmpl-mustache">
+  {{#issues}}
+    <a class="list-item" href="#" onclick="send({ action: 'open', payload: {{id}} })" >
+      {{#open}}
+        <svg class="octicon octicon-issue-opened open" viewBox="0 0 14 16" version="1.1" width="14"
+          height="16" aria-hidden="true">
+          <path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+        </svg>
+      {{/open}}
+      {{^open}}
+        <svg class="octicon octicon-issue-closed closed" viewBox="0 0 16 16" version="1.1" width="16" 
+        height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7 10h2v2H7v-2zm2-6H7v5h2V4zm1.5 1.5l-1 1L12 9l4-4.5-1-1L12 7l-1.5-1.5zM8 13.7A5.71 5.71 0 0 1 2.3 8c0-3.14 2.56-5.7 5.7-5.7 1.83 0 3.45.88 4.5 2.2l.92-.92A6.947 6.947 0 0 0 8 1C4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7l-1.52 1.52c-.66 2.41-2.86 4.19-5.48 4.19v-.01z"></path></svg>
+      {{/open}}
+      <span class="meta">#{{id}}</span>
+      <strong class="list-item-title">
+        {{title}}
+      </strong>
+      {{#open}}
+        <span class="byline">
+          由 <strong>{{nickName}}</strong> 打开于 {{openAt}}
+        </span>
+      {{/open}}
+      {{^open}}
+        <span class="byline">
+          由 <strong>{{nickName}}</strong> 关闭于 {{closeAt}}
+        </span>
+      {{/open}}      
+    </a>
+  {{/issues}}
+  {{^issues}}
+    <div class='Empty' >
+      <div style="margin-left: auto; margin-right: auto; margin-top: 24px; margin-bottom: 24px;" >无</div>
+    </div>    
+  {{/issues}}
+</script>
+
+<script id="paginationTpl" type="x-tmpl-mustache">
+  <div class="pagination">
+    <a {{#firstPage}} class="disabled" {{/firstPage}} href="#" onclick="send({action:'prev'})" >◀︎</a>
+    <span>{{pageNumber}} of {{totalPage}}</span>
+    <a {{#lastPage}} class="disabled" {{/lastPage}} href="#" onclick="send({action:'next'})">▶︎</a>
+  </div>
+</script>
+
+</html>

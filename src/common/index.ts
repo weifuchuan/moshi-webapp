@@ -8,7 +8,16 @@ import repeat from './kit/functions/repeat';
   async handle(...args: any[]): Promise<any> {}
 };
 
-var id2resolve = {};
+var id2resolve = {}; 
+
+function post(data: string) {
+  if (window.ReactNativeWebView) { 
+    ReactNativeWebView.postMessage(data);
+  } else { 
+    // @ts-ignore
+    window.postMessage(data);
+  }
+}
 
 window.document.addEventListener('message', async function(e: any) {
   var msg = e.data;
@@ -17,14 +26,18 @@ window.document.addEventListener('message', async function(e: any) {
     pending.forEach((f) => f());
     pending = [];
     return;
-  }
-  // alert(msg);
+  } 
   msg = JSON.parse(msg);
+  if (msg.action === 'minBodyHeight') {
+    document.getElementsByTagName('body')!.item(0)!.style.minHeight =
+      msg.payload;
+    return;
+  }
   if (msg.type === 0) {
     try {
       var payload = msg.payload;
       var result = await handler.handle(payload);
-      ReactNativeWebView.postMessage(JSON.stringify({ id: msg.id, result: result, type: 0 }));
+      post(JSON.stringify({ id: msg.id, result: result, type: 0 }));
     } catch (e) {}
   } else {
     if (id2resolve[msg.id]) {
@@ -46,7 +59,7 @@ window.document.addEventListener('message', async function(e: any) {
   return new Promise(function(resolve) {
     var id = new Date().toString() + Math.random();
     id2resolve[id] = resolve;
-    ReactNativeWebView.postMessage(JSON.stringify({ id: id, payload: payload, type: 1 }));
+    post(JSON.stringify({ id: id, payload: payload, type: 1 }));
   });
 };
 
@@ -55,14 +68,14 @@ $(() => {
     if ((window as any).ready) {
       return true;
     }
-    ReactNativeWebView.postMessage('ready');
+    post('ready');
     return false;
   }, 100);
 
   const body = document.getElementsByTagName('body').item(0)!;
 
   const observer = new ResizeObserver((entries) => {
-    ReactNativeWebView.postMessage(
+    post(
       JSON.stringify({
         type: 'heightChange',
         height: body.scrollHeight
@@ -109,5 +122,5 @@ export function enhancerVideo() {
     .attr('x-webkit-airplay', 'allow')
     .attr('x5-video-player-type', 'h5')
     .attr('x5-video-player-fullscreen', 'true')
-    .attr('x5-video-orientation', 'portraint'); 
+    .attr('x5-video-orientation', 'portraint');
 }

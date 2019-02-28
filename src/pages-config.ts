@@ -21,7 +21,23 @@ export default [
     inlineSource: '.(js|css)$'
   },
   {
-    name:"article-comment-editor",
+    name: 'article-comment-editor',
+    inlineSource: '.(js|css)$'
+  },
+  {
+    name: 'issue-editor',
+    inlineSource: '.(js|css)$'
+  },
+  {
+    name: 'issue-list',
+    entry: 'index.ts',
+    template: 'index.html',
+    inlineSource: '.(js|css)$'
+  },
+  {
+    name: 'issue',
+    entry: 'index.ts',
+    template: 'index.html',
     inlineSource: '.(js|css)$'
   }
 ] as Page[];

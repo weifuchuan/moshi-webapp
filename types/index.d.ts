@@ -2,6 +2,7 @@
 declare var __DEV__: boolean;
 
 declare var ready: boolean;
+declare var windowReady: boolean;
 declare var pending: Function[];
 
 declare function send(payload: any): Promise<any>
