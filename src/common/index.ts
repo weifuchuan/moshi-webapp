@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import repeat from './kit/functions/repeat';
+import ResizeObserver from "resize-observer-polyfill";
 
 (window as any).ready = false;
 (window as any).pending = [];
@@ -11,13 +12,14 @@ import repeat from './kit/functions/repeat';
 var id2resolve = {}; 
 
 function post(data: string) {
-  if (window.ReactNativeWebView) { 
+  if ((window as any).ReactNativeWebView) { 
     ReactNativeWebView.postMessage(data);
   } else { 
     // @ts-ignore
     window.postMessage(data);
   }
 }
+
 
 window.document.addEventListener('message', async function(e: any) {
   var msg = e.data;
